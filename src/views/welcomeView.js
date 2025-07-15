@@ -1,4 +1,4 @@
-import { START_LEARNING_BUTTON_ID } from "../constants.js";
+import { START_LEARNING_BUTTON_ID, CLASS_WELCOME_BOX, CLASS_PARAGRAPH_WRAPPER } from "../constants.js";
 
 /**
  * Create the welcome screen
@@ -6,12 +6,12 @@ import { START_LEARNING_BUTTON_ID } from "../constants.js";
  */
 
 export const createWelcomeElement = () => {
-  const element = document.createElement("main");
-  element.classList.add("main-content");
+  const element = document.createElement("div");
+  element.classList.add(CLASS_WELCOME_BOX);
   element.innerHTML = String.raw`
   <h1>Word a Day</h1>
     <h2>Consistency matters more than speed</h2>
-    <div class="p-wrapper">
+    <div class="${CLASS_PARAGRAPH_WRAPPER}">
       <p>Trying to learn English fast?</p>
       <p>We often overestimate what we can do in a day and underestimate what we can achieve over time.</p>
       <p>Learning one word a day is a small step — but over time, it leads to big results. Here, you're free to go at your own pace.</p>
