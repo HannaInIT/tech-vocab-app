@@ -148,11 +148,10 @@ body {
   background-repeat: no-repeat;
   z-index: -1;
   width: 300px;
-  position: fixed; 
+  position: fixed;
   top: 0;
   right: 0;
   pointer-events: none;
-  
 }
 
 #user-interface {
@@ -160,19 +159,75 @@ body {
   max-width: 1280px;
   width: 100%;
   margin: 0 auto;
-  padding: 30px;
+  padding: 10px;
   background-color: rgba(255, 255, 255, 0.8);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 
 .header {
+  position: relative;
   height: 60px;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 20px;
+  align-items: center;
+}
+
+.logo {
+  height: 40px;
+  width: auto;
+}
+
+.search-input {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 250px;
+  max-width: 80%;
+
+  outline: none;
+  font-size: 16px;
+  border-radius: 5px;
+  border: 1px solid #999;
+  padding: 5px 20px;
+}
+
+.search-input:focus {
+  padding: 5px 20px;
+  border: 2px solid #c0cdfd;
+}
+
+.search-input::placeholder {
+  color: #b8b8b8;
+}
+
+.menu-list {
+  display: flex;
+  gap: 16px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.menu-link {
+  text-decoration: none;
+  color: #3b4261;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-size: 18px;
+}
+
+.menu-link:hover {
+  text-decoration: underline;
 }
 
 /* under header */
 .welcome-box {
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  gap: 20px;
 }
 
 .welcome-box > h1 {
@@ -190,6 +245,7 @@ body {
   color: #537cf7;
   font-size: 20px;
   letter-spacing: 1px;
+  margin: 0;
 }
 
 .p-wrapper {
@@ -221,6 +277,3 @@ body {
   color: white;
   align-self: center;
 }
-
-
-
