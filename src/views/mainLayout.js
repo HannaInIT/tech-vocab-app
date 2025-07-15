@@ -1,4 +1,6 @@
 import { USER_INTERFACE_ID } from "../constants.js";
+import { fetchWordInformation } from "../services/wordsService.js";
+import { MAIN_CONTENT_ID } from "../constants.js";
 
 export function initMainLayout() {
   const backgroundImage = createBackgroundImage();
@@ -7,7 +9,8 @@ export function initMainLayout() {
   const header = createHeader();
   userInterface.appendChild(header);
   const main = document.createElement("main");
-  main.classList.add("main-content");
+  main.classList.add(MAIN_CONTENT_ID);
+  main.id = MAIN_CONTENT_ID
   userInterface.appendChild(main);
 }
 
@@ -20,9 +23,27 @@ export function createBackgroundImage() {
 }
 
 export function createHeader() {
-  // logo + menu
 
   const header = document.createElement("header");
   header.classList.add("header");
+
+  //logo
+
+  //search
+  const searchInput = document.createElement("input");
+  header.appendChild(searchInput);
+  searchInput.classList.add("search-input");
+  searchInput.addEventListener("keydown", async (e) => {
+    if (e.key === "Enter") {
+      console.log(searchInput.value);
+      const wordInfo = await fetchWordInformation(searchInput.value);
+      searchInput.value = "";
+      console.log(wordInfo);
+      // add initWordPage func with word info
+    }
+  });
+
+  //menu
+
   return header;
 }
