@@ -5,7 +5,7 @@ import {
 } from "../constants.js";
 import { fetchWordImage, fetchWordInformation, getRandomWordInformation } from "../services/wordsService.js";
 import { initWelcomePage } from "../pages/welcomePage.js";
-import { initWordPage } from "../pages/randomWordPage.js";
+import { initWordPage } from "../views/randomWordView.js";
 
 
 
