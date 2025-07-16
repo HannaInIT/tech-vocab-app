@@ -4,14 +4,12 @@ import {
   CLASS_LOGO,
 } from "../constants.js";
 import {
-  fetchWordImage,
   fetchWordInformation,
-  // getRandomWordInformation,
 } from "../services/wordsService.js";
 import { initWelcomePage } from "../pages/welcomePage.js";
 import { initWordPage } from "../views/randomWordView.js";
-
 import { initRandomWordPage } from "../pages/randomWordPage.js";
+import { fetchWordImage } from "../services/imageService.js";
 
 export function initMainLayout() {
   const backgroundImage = createBackgroundImage();
