@@ -47,7 +47,12 @@ export function initWordPage(wordData, wordImage, isSearchPage) {
       <div class="pronunciation-wrapper">
           <p>${wordTranscription}</p>
 
-          ${wordAudio ? `<audio src="${wordAudio}" controls="true"></audio>` : ""}        
+          ${wordAudio ? `
+            <audio id="audio-player" class="hidden-audio" src="${wordAudio}" controls="true"></audio>
+            <button class="speaker-icon" onclick="document.getElementById('audio-player').play()">
+            <img src="/public/images/speaker.svg" alt="play pronunciation" />
+            </button>
+            ` : ""}        
       </div>
 
       <div>

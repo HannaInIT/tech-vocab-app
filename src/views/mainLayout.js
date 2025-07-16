@@ -60,6 +60,17 @@ export function createHeader() {
       initWordPage(wordInfo, imageUrl, true);
     }
   });
+  searchInput.addEventListener("blur", async (e) => {
+    // if (e.key === "Enter") {
+      console.log(searchInput.value);
+      const wordInfo = await fetchWordInformation(searchInput.value);
+
+      const imageUrl = await fetchWordImage(wordInfo.word);
+      searchInput.value = "";
+
+      initWordPage(wordInfo, imageUrl, true);
+    // }
+  });
 
   // async function fetchWordAndInitRandomWordPage() {
   //   const word = await getRandomWordInformation();
@@ -73,22 +84,38 @@ export function createHeader() {
     // "Random word": fetchWordAndInitRandomWordPage,
     "Random word": initRandomWordPage,
   };
+  const menuConfigs = [
+    {title : 'Welcome', handler : initWelcomePage},
+    // "Random word": fetchWordAndInitRandomWordPage,
+    {title : "Random word", handler : initRandomWordPage},
+]
+
 
   const menu = document.createElement("nav");
   const menuList = document.createElement("ul");
   menuList.classList.add("menu-list");
 
-  Object.entries(menuConfig).forEach(([title, handler]) => {
+  let currentPage = 'Welcome'
+
+ menuConfigs.forEach(({title, handler}) => {
     const listItem = document.createElement("li");
 
     const link = document.createElement("a");
     link.href = "#";
-    link.textContent = title;
+   link.textContent = title;
+    if (currentPage === title) link.classList.add('current-page-disabled');
     link.classList.add("menu-link");
 
-    link.addEventListener("click", (e) => {
-      e.preventDefault();
-      handler();
+   link.addEventListener("click", (e) => {
+     if (currentPage === title) return;
+     const lastLink = document.querySelector('.current-page-disabled');
+     if (lastLink) lastLink.classList.remove('current-page-disabled');
+
+     e.preventDefault();
+     currentPage = title;
+     handler();
+
+     link.classList.add('current-page-disabled')
     });
 
     listItem.appendChild(link);
