@@ -1,4 +1,5 @@
-import { MAIN_CONTENT_ID , CLASS_NEXT_WORD_WRAPPER} from "../constants.js";
+import { MAIN_CONTENT_ID, CLASS_NEXT_WORD_WRAPPER } from "../constants.js";
+import { initRandomWordPage } from "../pages/randomWordPage.js";
 
 /**
  * Extracts up to three example sentences from the meanings array.
@@ -34,7 +35,9 @@ export function initWordPage(wordData, wordImage, isSearchPage) {
 
   const wordExamples = extractExamplesFromWordData(wordData.meanings);
 
-  const examplesListHtml = wordExamples.map((example) => `<li>${example}</li>`).join('')
+  const examplesListHtml = wordExamples
+    .map((example) => `<li>${example}</li>`)
+    .join("");
 
   main.innerHTML = String.raw`
   <h2>${isSearchPage ? "Search result" : "Random word"}</h2>
@@ -47,12 +50,16 @@ export function initWordPage(wordData, wordImage, isSearchPage) {
       <div class="pronunciation-wrapper">
           <p>${wordTranscription}</p>
 
-          ${wordAudio ? `
+          ${
+            wordAudio
+              ? `
             <audio id="audio-player" class="hidden-audio" src="${wordAudio}" controls="true"></audio>
             <button class="speaker-icon" onclick="document.getElementById('audio-player').play()">
             <img src="/public/images/speaker.svg" alt="play pronunciation" />
             </button>
-            ` : ""}        
+            `
+              : ""
+          }        
       </div>
 
       <div>
@@ -66,11 +73,18 @@ export function initWordPage(wordData, wordImage, isSearchPage) {
       
     </div>
     <div class="${CLASS_NEXT_WORD_WRAPPER}">
-        <button id="next-word-btn">Next word</button>
-      </div>
+  <button id="next-word-btn">${isSearchPage ? "Random word" : "Next word"}</button>
+</div>
   </div>
 
       
   </div>
   `;
+
+  const nextWordBtn = document.getElementById("next-word-btn");
+  if (nextWordBtn) {
+    nextWordBtn.addEventListener("click", () => {
+      initRandomWordPage();
+    });
+  }
 }

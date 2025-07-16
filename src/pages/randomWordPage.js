@@ -4,7 +4,7 @@ import { fetchWordImage } from "../services/imageService.js";
 import { MAIN_CONTENT_ID } from "../constants.js";
 
 export async function initRandomWordPage() {
-    document.body.className = "";
+  document.body.className = "";
   const main = document.getElementById(MAIN_CONTENT_ID);
   main.innerHTML = "";
   initLoader();
@@ -23,12 +23,17 @@ export async function initRandomWordPage() {
 export function initLoader() {
   const userInterface = document.getElementById("user-interface");
   const oldLoader = userInterface.querySelector(".loader-container");
-  if (oldLoader) oldLoader.remove();
+  if (oldLoader) return;
 
-  userInterface.innerHTML += `
-    <div class="loader-container">
-      <img src="/public/images/loader.png" alt="Loading..." />
-    </div>`;
+  const loaderDiv = document.createElement("div");
+  loaderDiv.classList.add("loader-container");
+
+  const loaderImg = document.createElement("img");
+  loaderImg.src = "/public/images/loader.png";
+  loaderImg.alt = "Loading...";
+
+  loaderDiv.appendChild(loaderImg);
+  userInterface.appendChild(loaderDiv);
 }
 
 export function removeLoader() {
