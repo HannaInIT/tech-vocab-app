@@ -1,5 +1,10 @@
-import { MAIN_CONTENT_ID } from "../constants.js";
+import { MAIN_CONTENT_ID , CLASS_NEXT_WORD_WRAPPER} from "../constants.js";
 
+/**
+ * Extracts up to three example sentences from the meanings array.
+ * @param {Array} meanings - Array of meanings from the dictionary API response.
+ * @returns {string[]} An array of example sentences (maximum of 3).
+ */
 export function extractExamplesFromWordData(meanings) {
   const examples = [];
 
@@ -13,6 +18,12 @@ export function extractExamplesFromWordData(meanings) {
   return examples.slice(0, 3);
 }
 
+/**
+ * Renders the word information page including image, pronunciation, definition, and examples.
+ * @param {Object} wordData - The word data object returned from the dictionary API.
+ * @param {string} wordImage - The image URL related to the word (from Unsplash).
+ * @param {boolean} isSearchPage - Flag indicating whether this is a search result page.
+ */
 export function initWordPage(wordData, wordImage, isSearchPage) {
   const main = document.getElementById(MAIN_CONTENT_ID);
 
@@ -39,14 +50,22 @@ export function initWordPage(wordData, wordImage, isSearchPage) {
           ${wordAudio ? `<audio src="${wordAudio}" controls="true"></audio>` : ""}        
       </div>
 
-      <div class="word-meaning-container">${wordData.word} ${mainWordMeaning.partOfSpeech} - ${mainWordMeaning.definitions[0].definition}</div>
+      <div>
+        <div class="word-meaning-container">${wordData.word} (${mainWordMeaning.partOfSpeech}) - ${mainWordMeaning.definitions[0].definition}</div>
 
       <div>
-        <ul>
+        <ol class="examples-list">Examples
           ${examplesListHtml}
-      </ul>
+      </ol>
       </div>
+      
     </div>
+    <div class="${CLASS_NEXT_WORD_WRAPPER}">
+        <button id="next-word-btn">Next word</button>
+      </div>
+  </div>
+
+      
   </div>
   `;
 }

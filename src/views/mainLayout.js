@@ -3,11 +3,15 @@ import {
   MAIN_CONTENT_ID,
   CLASS_LOGO,
 } from "../constants.js";
-import { fetchWordImage, fetchWordInformation, getRandomWordInformation } from "../services/wordsService.js";
+import {
+  fetchWordImage,
+  fetchWordInformation,
+  // getRandomWordInformation,
+} from "../services/wordsService.js";
 import { initWelcomePage } from "../pages/welcomePage.js";
 import { initWordPage } from "../views/randomWordView.js";
 
-
+import { initRandomWordPage } from "../pages/randomWordPage.js";
 
 export function initMainLayout() {
   const backgroundImage = createBackgroundImage();
@@ -44,33 +48,32 @@ export function createHeader() {
   //search
   const searchInput = document.createElement("input");
   header.appendChild(searchInput);
-  searchInput.placeholder = 'Search...'
+  searchInput.placeholder = "Search...";
   searchInput.classList.add("search-input");
+  searchInput.name = "search";
   searchInput.addEventListener("keydown", async (e) => {
     if (e.key === "Enter") {
       console.log(searchInput.value);
       const wordInfo = await fetchWordInformation(searchInput.value);
 
-      const imageUrl = await fetchWordImage(wordInfo.word)
+      const imageUrl = await fetchWordImage(wordInfo.word);
       searchInput.value = "";
-      
-      initWordPage(wordInfo, imageUrl, true)
 
+      initWordPage(wordInfo, imageUrl, true);
     }
   });
 
-  async function fetchWordAndInitRandomWordPage() {
-    const word = await getRandomWordInformation()
-    const imageUrl = await fetchWordImage(word.word)
-    initWordPage(word, imageUrl, false)
-  }
-
-
+  // async function fetchWordAndInitRandomWordPage() {
+  //   const word = await getRandomWordInformation();
+  //   const imageUrl = await fetchWordImage(word.word);
+  //   initWordPage(word, imageUrl, false);
+  // }
 
   //menu
   const menuConfig = {
     Welcome: initWelcomePage,
-    "Random word":  fetchWordAndInitRandomWordPage,
+    // "Random word": fetchWordAndInitRandomWordPage,
+    "Random word": initRandomWordPage,
   };
 
   const menu = document.createElement("nav");

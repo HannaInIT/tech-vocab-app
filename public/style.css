@@ -130,7 +130,7 @@ body {
   font-family: "Poppins", sans-serif;
   font-weight: 400;
   font-style: normal;
-  font-size: 20px;
+  font-size: 18px;
 }
 
 /* App */
@@ -159,7 +159,7 @@ body {
   max-width: 1280px;
   width: 100%;
   margin: 0 auto;
-  padding: 10px;
+  padding: 20px;
   background-color: rgba(255, 255, 255, 0.8);
   display: flex;
   flex-direction: column;
@@ -171,7 +171,7 @@ body {
   height: 60px;
   display: flex;
   justify-content: space-between;
-  padding: 0 20px;
+  /* padding: 0 10px; */
   align-items: center;
 }
 
@@ -276,4 +276,86 @@ body {
   font-weight: inherit;
   color: white;
   align-self: center;
+}
+
+.main-content >h2{
+  font-family: "Unna", serif;
+  font-weight: 700;
+color: #6586F8;
+font-size: 30px;
+}
+
+.word-container {
+  /* background-color: red; */
+  display: flex;
+  width: 100%;
+  margin: 0 auto;
+  gap: 30px;
+}
+
+.right-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  gap: 25px;
+  width: 60%;
+}
+
+.right-wrapper h3{
+   font-family: "Unna", serif;
+  font-weight: 700;
+font-size: 28px;
+  color: #313340;
+}
+
+.pronunciation-wrapper{
+  display: flex;
+  gap: 20px;
+ 
+}
+
+.word-meaning-container {
+  background-color: #b1c2fe;
+  padding: 30px 40px;
+  border-radius: 20px;
+}
+
+.word-img {
+  width: 380px;
+  height: 450px;
+  border-radius: 10px;
+  object-fit: cover;
+}
+
+
+
+.examples-list {
+  /* height: 0; */
+  /* opacity: 0; */
+  display: flex;
+  gap: 7px;
+  flex-direction: column;
+  align-items: start;
+  transition: all 0.2s ease;
+  /* overflow-y: hidden; */
+}
+
+.next-word-wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+}
+
+#next-word-btn {
+  background-color: #4e7df4;
+  border-radius: 60px;
+  padding: 20px 30px;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  font-size: 18px;
+  font-family: inherit;
+  font-weight: inherit;
+  color: white;
+  align-self: right;
 }

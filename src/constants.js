@@ -8,3 +8,4 @@ export const CLASS_WELCOME_BOX = "welcome-box";
 export const CLASS_PARAGRAPH_WRAPPER = "p-wrapper";
 export const CLASS_MAIN_CONTENT = "main-content";
 export const CLASS_LOGO = 'logo'
+export const CLASS_NEXT_WORD_WRAPPER = 'next-word-wrapper'

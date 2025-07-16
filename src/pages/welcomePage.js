@@ -1,6 +1,8 @@
 import { MAIN_CONTENT_ID, START_LEARNING_BUTTON_ID } from "../constants.js";
+// import { initWordPage } from "../views/randomWordView.js";
 import { createWelcomeElement } from "../views/welcomeView.js";
-// import { initRandomWordPage} from
+import { initRandomWordPage } from "./randomWordPage.js";
+
 
 export const initWelcomePage = () => {
   document.body.className = "welcome-background";
@@ -16,4 +18,5 @@ export const initWelcomePage = () => {
 export const startLearning = () => {
   document.body.className = "";
   initRandomWordPage();
+  // initWordPage()
 };
