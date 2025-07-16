@@ -38,6 +38,7 @@ ol[role="list"] {
 body {
   min-height: 100vh;
   line-height: 1.5;
+  margin: 0;
 }
 
 /* Set shorter line heights on headings and interactive elements */
@@ -131,16 +132,16 @@ body {
   font-weight: 400;
   font-style: normal;
   font-size: 18px;
+  height: 100vh;
+  height: 100dvh;
+  padding: 20px 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 
 /* App */
-.centered {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  text-align: center;
-}
 
 .background-img {
   background-size: cover;
@@ -164,6 +165,22 @@ body {
   display: flex;
   flex-direction: column;
   gap: 20px;
+  min-height: calc(100vh - 40px);
+  /* overflow: hidden; */
+  overflow: auto;
+  position: relative;
+  
+}
+
+#user-interface::-webkit-scrollbar {
+	width: 12px;
+	background: transparent;
+}
+
+#user-interface::-webkit-scrollbar-thumb {
+	background: #97b4fc;
+	border-radius: 5px;
+	border: 3px solid white;
 }
 
 .header {
@@ -278,6 +295,23 @@ body {
   align-self: center;
 }
 
+.main-content{
+  position: relative;
+  margin: auto;
+}
+
+.loader-container{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .main-content > h2 {
   font-family: "Unna", serif;
   font-weight: 700;
@@ -286,10 +320,12 @@ body {
 }
 
 .word-container {
-  /* background-color: red; */
-  display: flex;
+  /* display: flex;
   width: 100%;
   margin: 0 auto;
+   */
+  display: grid;
+  grid-template-columns: 1fr 2fr;
   gap: 30px;
 }
 
@@ -298,7 +334,7 @@ body {
   flex-direction: column;
   align-items: start;
   gap: 25px;
-  width: 60%;
+  width: 100%;
 }
 
 .right-wrapper h3 {
@@ -327,10 +363,12 @@ body {
 }
 
 .word-img {
-  width: 45%;
-  max-height: 450px;
+  width: 100%;
+  max-height: 60vh;
+  height: 100%;
   border-radius: 10px;
   object-fit: cover;
+
 }
 
 .hidden-audio {
@@ -388,3 +426,5 @@ body {
   color: white;
   align-self: right;
 }
+
+

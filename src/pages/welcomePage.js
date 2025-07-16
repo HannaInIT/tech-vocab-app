@@ -11,6 +11,7 @@ export const initWelcomePage = () => {
   document
     .getElementById(START_LEARNING_BUTTON_ID)
     .addEventListener("click", startLearning);
+  
 };
 
 export const startLearning = () => {

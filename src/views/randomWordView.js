@@ -39,7 +39,7 @@ export function initWordPage(wordData, wordImage, isSearchPage) {
   main.innerHTML = String.raw`
   <h2>${isSearchPage ? "Search result" : "Random word"}</h2>
   <div class="word-container">
-    <img src="${wordImage}" class="word-img"></img>
+    <img src="${wordImage}" class="word-img" loading="lazy"/>
 
     <div class="right-wrapper">
       <h3>${wordData.word}</h3>

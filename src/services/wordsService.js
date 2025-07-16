@@ -34,8 +34,6 @@ function addAudio(audioSrc) {
   audioTrack.controls = true;
 
   body.appendChild(audioTrack);
-  console.log(body);
-  console.log(audioTrack);
 }
 
 function getRandomWordFromArray(array) {
